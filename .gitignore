@@ -1,0 +1,14 @@
+.settings
+.project
+/Client/target
+/Client/.classpath
+/Client/.project
+/Client/.settings
+/JNDIWithTdd/target
+/JNDIWithTdd/.classpath
+/JNDIWithTdd/.project
+/JNDIWithTdd/.settings
+/Server/target
+/Server/.classpath
+/Server/.project
+/Server/.settings
