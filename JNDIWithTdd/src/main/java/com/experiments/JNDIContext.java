@@ -1,6 +1,9 @@
 package com.experiments;
 
 import java.util.Hashtable;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import javax.naming.Binding;
 import javax.naming.Context;
@@ -12,14 +15,31 @@ import javax.naming.NamingException;
 
 public class JNDIContext implements Context {
 
+    private static JNDIContextRepository jndiContextRepository;
+    private static JNDIContextRepository repository;
+
+    private NameParser parser;
+    private String name;
+    protected final Map<String, Object> env = new ConcurrentHashMap<>();
+
+    public JNDIContext(Map<String, Object> env) {
+        this(env, "JSON");
+    }
+
+    public JNDIContext(Map<String, Object> env, String name) {
+        this.env.putAll(env);
+        this.name = name;
+        this.parser = new JNDIParser();
+
+        repository = new JNDIContextRepositoryImpl();
+    }
+
     public Object lookup(Name name) throws NamingException {
-        
         return null;
     }
 
     public Object lookup(String name) throws NamingException {
-        // TODO Auto-generated method stub
-        return null;
+        return repository.lookup(name);
     }
 
     public void bind(Name name, Object obj) throws NamingException {

@@ -12,3 +12,5 @@
 /Server/.classpath
 /Server/.project
 /Server/.settings
+.idea/
+*.iml

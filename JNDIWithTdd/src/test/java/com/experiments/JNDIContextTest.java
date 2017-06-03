@@ -26,7 +26,11 @@ public class JNDIContextTest {
     @Test
     public void lookupByName() throws NamingException {
         // given
-
+        DbConnection dbConnection = new DbConnection();
+        dbConnection.setHost("localhost");
+        dbConnection.setUser("joe");
+        dbConnection.setPw("pw");
+        contextToTest.bind("json:/testconnection/oracledb", dbConnection);
         // when
         Object obj = contextToTest.lookup("json:/connection/oracledb");
 
